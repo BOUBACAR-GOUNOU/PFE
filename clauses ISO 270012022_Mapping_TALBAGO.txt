@@ -1,0 +1,30 @@
+Détail des clauses ISO 27001:2022
+
+A.5.16 — Gestion des identités
+Chaque utilisateur doit avoir une identité unique et des droits limités à son besoin → correspond à ton contrôle MFA + moindre privilège IAM
+A.5.17 — Informations d'authentification
+Les mots de passe et clés d'accès doivent être gérés de façon sécurisée et renouvelés régulièrement → correspond à la rotation des clés IAM et aux AWS Secrets Manager
+A.8.2 — Droits d'accès privilégiés
+Les accès à hauts privilèges doivent être strictement contrôlés et limités → correspond au principe du moindre privilège sur les rôles IAM et EC2
+A.8.3 — Restriction d'accès à l'information
+L'accès aux données doit être restreint selon le besoin → correspond aux politiques de bucket S3 et au chiffrement KMS
+A.8.7 — Protection contre les malwares
+Les systèmes doivent être protégés contre les codes malveillants → correspond à la surveillance de l'EC2 (Wazuh, GuardDuty)
+A.8.8 — Gestion des vulnérabilités techniques
+Les vulnérabilités doivent être identifiées et corrigées rapidement → correspond au scan de code CodeGuru et à l'analyse statique en CI/CD
+A.8.15 — Journalisation
+Les activités et événements de sécurité doivent être enregistrés → correspond à CloudTrail, CloudWatch logs, audit SQL RDS
+A.8.16 — Surveillance
+Les systèmes doivent être surveillés pour détecter les comportements anormaux → correspond à GuardDuty, Wazuh, AWS Config
+A.8.20 — Sécurité des réseaux
+Les réseaux doivent être sécurisés et protégés → correspond aux Security Groups et à la fermeture du port SSH public
+A.8.21 — Sécurité des services réseau
+Les services exposés sur le réseau doivent être protégés → correspond au WAF devant l'ALB
+A.8.22 — Ségrégation des réseaux
+Les réseaux doivent être segmentés → correspond aux subnets publics/privés et au RDS en subnet privé
+A.8.24 — Utilisation de la cryptographie
+Les données sensibles doivent être chiffrées → correspond au chiffrement KMS sur S3 et RDS
+A.8.25 — Cycle de développement sécurisé
+La sécurité doit être intégrée dans le cycle de développement → correspond à l'analyse statique en CI/CD avec CodePipeline
+A.8.28 — Codage sécurisé
+Le code doit suivre des pratiques de développement sécurisé → correspond à la suppression de execSync(input) et à l'externalisation des secrets
